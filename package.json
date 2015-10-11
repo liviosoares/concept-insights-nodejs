@@ -37,6 +37,6 @@
     "errorhandler": "~1.4.1",
     "express": "~4.13.1",
     "serve-favicon": "~2.3.0",
-    "watson-developer-cloud": "~0.10.5"
+    "watson-developer-cloud": "~0.10.6"
   }
 }
