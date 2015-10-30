@@ -18,24 +18,19 @@
 
 var express = require('express'),
   app = express(),
-  bluemix = require('./config/bluemix'),
   extend = require('util')._extend,
   watson = require('watson-developer-cloud'),
-  async  = require('async'),
-  favicon = require('serve-favicon');
+  async  = require('async');
 
 // Bootstrap application settings
 require('./config/express')(app);
 
-app.use(favicon(__dirname + '/public/images/favicon.ico'));
-
 // if bluemix credentials exists, then override local
 var credentials = extend({
-  url: '<url>',
   username: '<username>',
   password: '<password>',
   version: 'v2'
-}, bluemix.getServiceCreds('concept_insights')); // VCAP_SERVICES
+}); // VCAP_SERVICES
 
 var corpus_id = process.env.CORPUS_ID || '/corpora/public/TEDTalks';
 var graph_id  = process.env.GRAPH_ID ||  '/graphs/wikipedia/en-20120601';

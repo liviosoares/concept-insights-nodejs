@@ -34,9 +34,10 @@
   "dependencies": {
     "async": "~1.5.0",
     "body-parser": "~1.14.1",
-    "errorhandler": "~1.4.1",
     "express": "~4.13.3",
-    "serve-favicon": "~2.3.0",
-    "watson-developer-cloud": "~0.10.6"
+    "express-rate-limit": "^2.0.2",
+    "express-secure-only": "^0.2.1",
+    "helmet": "^0.13.0",
+    "watson-developer-cloud": "^1.0.0-beta.1"
   }
 }

@@ -1,5 +1,5 @@
 /**
- * Copyright 2014 IBM Corp. All Rights Reserved.
+ * Copyright 2015 IBM Corp. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,18 +16,25 @@
 
 'use strict';
 
-// Module dependencies
-var express    = require('express'),
-  bodyParser   = require('body-parser');
+// security.js
+var secure  = require('express-secure-only'),
+  rateLimit = require('express-rate-limit'),
+  helmet    = require('helmet');
 
 module.exports = function (app) {
+  app.enable('trust proxy');
 
-  // Only loaded when SECURE_EXPRESS is `true`
-  if (process.env.SECURE_EXPRESS)
-    require('./security')(app);
+  // 1. redirects http to https
+  app.use(secure());
 
-  // Configure Express
-  app.use(bodyParser.urlencoded({ extended: true, limit: '1mb' }));
-  app.use(bodyParser.json({ limit: '1mb' }));
-  app.use(express.static(__dirname + '/../public'));
+  // 2. helmet with defaults
+  app.use(helmet());
+
+  // 3. rate-limit to /api/
+  app.use('/api/', rateLimit({
+    windowMs: 60 * 1000, // seconds
+    delayMs: 0,
+    max: 50
+  }));
+
 };

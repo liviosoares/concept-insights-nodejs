@@ -12,3 +12,4 @@ applications:
   memory: 512M
   env:
     NODE_ENV: production
+    SECURE_EXPRESS: true
