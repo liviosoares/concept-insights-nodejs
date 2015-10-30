@@ -8,6 +8,7 @@ applications:
   name: concept-insights-nodejs
   command: node app.js
   path: .
-  memory: 768M
+  instances: 2
+  memory: 512M
   env:
     NODE_ENV: production

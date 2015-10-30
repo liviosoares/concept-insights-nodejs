@@ -33,7 +33,7 @@ Give it a try! Click the button below to fork into IBM DevOps Services and deplo
 
 5. Create the Concept Insights service in Bluemix
   ```sh
-  $ cf create-service concept_insights standard concept-insights-service
+  $ cf create-service concept_insights standard concept-insights-standard
   ```
 
 6. Push it live!
@@ -45,7 +45,7 @@ Give it a try! Click the button below to fork into IBM DevOps Services and deplo
 ## Running locally
   The application uses [Node.js](http://nodejs.org/) and [npm](https://www.npmjs.com/) so you will have to download and install them as part of the steps below.
 
-1. Copy the credentials from your `concept-insights-service` service in Bluemix to `app.js`, you can see the credentials using:
+1. Copy the credentials from your `concept-insights-standard` service in Bluemix to `app.js`, you can see the credentials using:
 
     ```sh
     $ cf env <application-name>
@@ -62,7 +62,7 @@ Give it a try! Click the button below to fork into IBM DevOps Services and deplo
             "username": "<username>"
           },
         "label": "concept_insights",
-        "name": "concept-insights-service",
+        "name": "concept-insights-standard",
         "plan": "standard"
      }]
     }
