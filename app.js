@@ -112,11 +112,11 @@ var crop = function(doc, tag){
   var documentText = doc.parts[tag.parts_index].data;
 
   var anchor = documentText.substring(textIndexes[0], textIndexes[1]);
-  var left = Math.max(textIndexes[0] - 100, 0);
-  var right = Math.min(textIndexes[1] + 100, documentText.length);
+  var leftIndex = Math.max(textIndexes[0] - 100, 0);
+  var rightIndex = Math.min(textIndexes[1] + 100, documentText.length);
 
-  var prefix = documentText.substring(left, textIndexes[0]);
-  var suffix = documentText.substring(textIndexes[1], right);
+  var prefix = documentText.substring(leftIndex, textIndexes[0]);
+  var suffix = documentText.substring(textIndexes[1], rightIndex);
 
   var firstSpace = prefix.indexOf(' ');
   if ((firstSpace !== -1) && (firstSpace + 1 < prefix.length))
