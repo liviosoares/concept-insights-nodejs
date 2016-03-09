@@ -23,7 +23,7 @@ var express    = require('express'),
 module.exports = function (app) {
 
   // Only loaded when SECURE_EXPRESS is `true`
-  if (process.env.SECURE_EXPRESS)
+  if (process.env.SECURE_EXPRESS == "1")
     require('./security')(app);
 
   // Configure Express
