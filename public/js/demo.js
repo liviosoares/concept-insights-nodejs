@@ -222,7 +222,7 @@ $(document).ready(function() {
 		abstract: 1
 	    })
 	}).done(function(results) {
-	    if (results.match.length > 0) {
+	    if (results.matches.length > 0) {
 		selectionCallback(results.matches[0]);
 	    }
 	})
