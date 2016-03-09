@@ -207,8 +207,26 @@ $(document).ready(function() {
     });
   });
 
-
-
+    var query_concepts = '';
+    location.search.substr(1).split('&').forEach(function(q) {
+	var s = q.split('=');
+	if (s[0] == "concepts") {
+	    query_concepts = decodeURIComponent(s[1]);
+	}
+    });
+    if (query_concepts.length > 0) {
+	$.get('/api/labelSearch', {
+	    query: query_concepts,
+	    limit: 7,
+	    concept_fields: JSON.stringify({
+		abstract: 1
+	    })
+	}).done(function(results) {
+	    if (results.match.length > 0) {
+		selectionCallback(results.matches[0]);
+	    }
+	})
+    }
 });
 
 function show_label_search_response() {
